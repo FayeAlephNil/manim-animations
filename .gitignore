@@ -1,0 +1,4 @@
+videos/*
+Tex/*
+__pycache__/*
+*.mp4

@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 from manimlib.imports import *
+import math
 
 
 class SquareToCircle(Scene):
@@ -56,7 +57,7 @@ class Transform(Scene):
         self.wait()
         self.play(
             grid.apply_function,
-            lambda p: np.array([p[0], -p[1], 0]) / (p[0] ** 2 + p[1] ** 2),
+            lambda p: math.exp(p[0]) * np.array([math.cos(p[1]), math.sin(p[1]), 0]),
             run_time=3,
         )
         self.wait()
@@ -103,7 +104,7 @@ class IterTransform(Scene):
         self.play(ShowCreation(circle))
         self.play(ShowCreation(boundary))
         grid.prepare_for_nonlinear_transform()
-        for n in range(1, 10):
+        for n in range(1, 6):
             grid, circle = self.go(grid, circle, IterTransform.apply_func)
 
         self.wait()
